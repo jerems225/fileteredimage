@@ -6,12 +6,16 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:8082/filteredimage?image_url=https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg",
+			"name": "http://{{HOST}}/filteredimage?image_url=https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"headers": [
+					{
+						"authorization" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NjQ4MDIzMzh9._Zx8uLJ6AZptEZM-0ZOoJdqmsWRNqKDGKpxfKw3L9Gs"
+					}
+				],
 				"url": {
-					"raw": "http://{{HOST}}/filteredimage?image_url=https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg",
+					"raw": "http://{{HOST}}/filteredimage?image_url=https://ichef.bbci.co.uk/live-experience/cps/624/cpsprodpb/vivo/live/images/2022/10/3/b96034f7-d9e8-42b7-ac53-1967b7ab21c2.png",
 					"protocol": "http",
 					"host": [
 						"{{HOST}}"
@@ -22,9 +26,29 @@
 					"query": [
 						{
 							"key": "image_url",
-							"value": "https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg"
+							"value": "https://ichef.bbci.co.uk/live-experience/cps/624/cpsprodpb/vivo/live/images/2022/10/3/b96034f7-d9e8-42b7-ac53-1967b7ab21c2.png"
 						}
 					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{HOST}}/generatetoken",
+			"request": {
+				"method": "GET",
+				"headers": [
+					
+				],
+				"url": {
+					"raw": "http://{{HOST}}/generatetoken",
+					"protocol": "http",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+					],
+					"query": [ ]
 				}
 			},
 			"response": []

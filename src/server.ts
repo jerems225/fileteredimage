@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import {filterImageFromURL, deleteLocalFiles} from './util/util';
+import { generateJwt, requireAuth } from './controllers/auth';
 
 (async () => {
 
@@ -12,14 +13,25 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   
   // Use the body parser middleware for post requests
   app.use(bodyParser.json());
+  //CORS Should be restricted
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://localhost:8100");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    next();
+  });
   
   // Root Endpoint
   // Displays a simple message to the user
   app.get( "/", async ( req, res ) => {
     res.send("try GET /filteredimage?image_url={{}}")
   } );
+
+  app.get("/generatetoken", async (req,res) => {
+      const token = await generateJwt();
+      res.status(200).send(token);
+  })
   
-  app.get("/filteredimage", async (req,res) => {
+  app.get("/filteredimage",requireAuth, async (req,res) => {
 
     //URL of a publicly accessible image
     const image_url = req.query.image_url;
