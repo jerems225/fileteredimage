@@ -39,9 +39,18 @@ If you're feeling up to it, refactor the course RESTapi to make a request to you
 
 ### Authentication
 
-Prevent requests without valid authentication headers.
+L'endpoint /filteredimage requiert une authentification avec un token jwt
+alors j'ai mis en place un endpoint 
 
-use the endpoint /generatetoken for get a valid token
+/generatetoken (GET)
+
+pour obtenir un token valide
+qui devra être passe dans les headers lors de l'envoi d'une requête
+
+Authorization : Token  (obtenu après un get sur /generatetoken)
+
+Il y'a aussi un token dans la collection postman
+
 > !!NOTE if you choose to submit this, make sure to add the token to the postman collection and export the postman collection file to your submission so we can review!
 
 ### Custom Domain Name
